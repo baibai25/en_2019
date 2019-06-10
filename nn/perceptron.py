@@ -10,7 +10,7 @@ def AND(x1, x2):
     out = np.sum(w*x) + b
     
     # Step function
-    if out <= 0:
+    if out < 0:
         return 0, out
     else:
         return 1, out
