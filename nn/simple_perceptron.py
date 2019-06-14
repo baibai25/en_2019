@@ -43,9 +43,8 @@ if __name__ == '__main__':
     #t = np.array([0, 1, 1, 1])
     #t = np.array([0, 1, 1, 0])
     
-    epoch = 0
     err = []
-    while epoch < 100:
+    for epoch in range(100):
         # training
         y_pred = []
         for i in range(len(data)):
@@ -53,10 +52,8 @@ if __name__ == '__main__':
             train(data[i], w, y, t[i])
             y_pred.append(y)
         
+        err.append(mean_squared_error(np.array(y_pred), t))
         print('Epoch{}:, Pred:{}, T:{}'.format(epoch, y_pred, t)) 
-
-        err.append(mean_squared_error(np.array(y_pred), t)) 
-        epoch += 1
     
     # MSE graph
     plt.plot(err)
